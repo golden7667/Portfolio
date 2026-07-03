@@ -117,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
             const subject = document.getElementById('subject').value.trim();
             const message = document.getElementById('message').value.trim();
             
@@ -125,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (!name) { document.getElementById('nameError').classList.remove('hidden'); isValid = false; }
             if (!email || !/^\S+@\S+\.\S+$/.test(email)) { document.getElementById('emailError').classList.remove('hidden'); isValid = false; }
-            if (!phone) { document.getElementById('phoneError').classList.remove('hidden'); isValid = false; }
             if (!subject) { document.getElementById('subjectError').classList.remove('hidden'); isValid = false; }
             if (message.length < 20) { document.getElementById('messageError').classList.remove('hidden'); isValid = false; }
             
@@ -155,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     body: JSON.stringify({ 
                         name: name,
                         email: email,
-                        phone: phone,
                         subject: subject,
                         message: message,
                         _subject: "New Portfolio Submission: " + subject
