@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Kumar | Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1', // Indigo 500
+                        secondary: '#a855f7', // Purple 500
+                        dark: '#0f172a', // Slate 900
+                        darker: '#020617', // Slate 950
+                        light: '#f8fafc', // Slate 50
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="bg-darker text-light font-sans antialiased overflow-x-hidden">
+    <!-- Starry Background Animation -->
+    <div id="particles-js" class="fixed inset-0 z-[-2]"></div>
+
+    <!-- Background Gradient Effects -->
+    <div class="fixed inset-0 z-[-1]">
+        <div
+            class="absolute top-0 -left-4 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob">
+        </div>
+        <div
+            class="absolute top-0 -right-4 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute -bottom-8 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-4000">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-darker/70 border-b border-white/10"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="#"
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">GK.</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about"
+                            class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#skills"
+                            class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#experience"
+                            class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#projects"
+                            class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#contact"
+                            class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up" data-aos-duration="1000">
+
+            <!-- Profile Photo -->
+            <div id="profilePhotoContainer" class="mb-8 relative inline-block animate-float-round cursor-pointer">
+                <div
+                    class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white/10 shadow-[0_0_30px_rgba(59,130,246,0.2)] mx-auto relative z-10 transition-transform duration-300 hover:scale-105 hover:border-blue-500/50">
+                    <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Golden Kumar"
+                        class="w-full h-full object-cover"
+                        onerror="this.src='https://ui-avatars.com/api/?name=Golden+Kumar&background=0D8ABC&color=fff&size=200'">
+                </div>
+                <div
+                    class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full blur-xl opacity-30 animate-pulse -z-10">
+                </div>
+            </div>
+
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-6 tracking-tight text-white">
+                <span class="block">Golden Kumar</span>
+            </h1>
+            <div class="text-2xl md:text-4xl font-normal mb-8 h-12 text-gray-300">
+                <span id="typewriter"></span><span class="cursor text-blue-400 font-light">|</span>
+            </div>
+            <p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-400 mb-10 leading-relaxed">
+                Passionate about machine learning and frontend development. Building
+                innovative solutions with modern technologies while maintaining a positive
+                mindset.
+            </p>
+            <div class="flex justify-center gap-4 mb-12">
+                <a href="#projects"
+                    class="px-8 py-3 rounded-full font-semibold transition-all bg-gradient-to-r from-blue-500 to-purple-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] text-white border border-transparent">
+                    Explore My Work
+                </a>
+                <a href="#contact"
+                    class="px-8 py-3 rounded-full font-semibold border border-gray-500 hover:border-gray-300 transition-all bg-transparent text-gray-300 hover:text-white">
+                    Contact Me
+                </a>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex justify-center gap-6 mb-4 text-2xl text-gray-400">
+                <a href="https://linkedin.com/in/golden-kr-singh" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/its_gold_d_roger?igsh=MXF2bm1tOThlb3V2MQ%3D%3D&amp;utm_source=qr"
+                    target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://github.com/golden7667" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-gray-400 hover:text-white transition-colors">
+                <i class="fas fa-chevron-down text-xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="text-primary">Me</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="glass-card p-8 md:p-12 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                <div
+                    class="text-lg text-gray-300 leading-relaxed text-justify md:text-center max-w-4xl mx-auto space-y-4">
+                    <p>Hello! I'm Golden Kumar, an aspiring Machine Learning Engineer and passionate frontend developer
+                        currently pursuing my degree at Vivekananda Global University, Jaipur.</p>
+                    <p>My journey in technology is driven by curiosity and a genuine love for creating solutions that
+                        make a difference. Whether it's building responsive web applications or diving deep into machine
+                        learning algorithms, I approach every project with enthusiasm and dedication.</p>
+                    <p>When I'm not coding, you'll find me on the cricket field or exploring new technologies. I believe
+                        in maintaining a healthy work-life balance while continuously learning and growing.</p>
+                </div>
+                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="p-4">
+                        <h3 class="text-4xl font-bold text-primary mb-2">2+</h3>
+                        <p class="text-gray-400">Internships</p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-4xl font-bold text-secondary mb-2">5+</h3>
+                        <p class="text-gray-400">Projects</p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-4xl font-bold text-primary mb-2">100%</h3>
+                        <p class="text-gray-400">Dedication</p>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-4xl font-bold text-secondary mb-2">7.12</h3>
+                        <p class="text-gray-400">CGPA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-primary">Skills</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Programming -->
+                <div class="glass-card p-6 rounded-2xl hover-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-primary text-3xl mb-4"><i class="fas fa-code"></i></div>
+                    <h3 class="text-xl font-semibold mb-4 border-b border-white/10 pb-2">Programming</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center"><i class="fab fa-python mr-3 text-white"></i> Python</li>
+                        <li class="flex items-center"><i class="fab fa-js mr-3 text-yellow-400"></i> JavaScript</li>
+                        <li class="flex items-center"><span class="font-bold mr-3 text-blue-400">TS</span> TypeScript
+                        </li>
+                        <li class="flex items-center"><i class="fab fa-react mr-3 text-cyan-400"></i> React</li>
+                    </ul>
+                </div>
+
+                <!-- Backend & DB -->
+                <div class="glass-card p-6 rounded-2xl hover-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-secondary text-3xl mb-4"><i class="fas fa-server"></i></div>
+                    <h3 class="text-xl font-semibold mb-4 border-b border-white/10 pb-2">Backend & DB</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center"><i class="fas fa-pepper-hot mr-3 text-red-500"></i> Flask</li>
+                        <li class="flex items-center"><i class="fas fa-bolt mr-3 text-teal-400"></i> FastAPI</li>
+                        <li class="flex items-center"><i class="fas fa-database mr-3 text-blue-300"></i> MySQL</li>
+                    </ul>
+                </div>
+
+                <!-- Machine Learning -->
+                <div class="glass-card p-6 rounded-2xl hover-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-primary text-3xl mb-4"><i class="fas fa-brain"></i></div>
+                    <h3 class="text-xl font-semibold mb-4 border-b border-white/10 pb-2">Machine Learning</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center"><i class="fas fa-robot mr-3 text-orange-400"></i> Scikit-learn
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-eye mr-3 text-indigo-400"></i> OpenCV</li>
+                        <li class="flex items-center"><i class="fas fa-tree mr-3 text-green-400"></i> Random Forest</li>
+                        <li class="flex items-center"><i class="fas fa-user-check mr-3 text-pink-400"></i> Face
+                            Recognition</li>
+                    </ul>
+                </div>
+
+                <!-- Tools -->
+                <div class="glass-card p-6 rounded-2xl hover-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-secondary text-3xl mb-4"><i class="fas fa-tools"></i></div>
+                    <h3 class="text-xl font-semibold mb-4 border-b border-white/10 pb-2">Tools & Libraries</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center"><i class="fab fa-git-alt mr-3 text-orange-500"></i> Git & GitHub
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-table mr-3 text-white"></i> Pandas</li>
+                        <li class="flex items-center"><i class="fas fa-calculator mr-3 text-blue-300"></i> NumPy</li>
+                        <li class="flex items-center"><i class="fas fa-file-pdf mr-3 text-red-400"></i> ReportLab</li>
+                        <li class="flex items-center"><i class="fas fa-image mr-3 text-yellow-300"></i> Pillow</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Achievements Section -->
+    <section id="achievements" class="py-20 relative bg-[#0f172a]/30 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 inline-block">
+                    Key Achievements
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Stat 1 -->
+                <div class="glass-card p-8 rounded-3xl text-center hover-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-5xl md:text-6xl font-bold text-white mb-4">50+</h3>
+                    <p class="text-blue-400 font-semibold text-lg md:text-xl">DSA Problems Solved</p>
+                </div>
+                <!-- Stat 2 -->
+                <div class="glass-card p-8 rounded-3xl text-center hover-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-5xl md:text-6xl font-bold text-white mb-4">3+</h3>
+                    <p class="text-purple-400 font-semibold text-lg md:text-xl">Projects Completed</p>
+                </div>
+                <!-- Stat 3 -->
+                <div class="glass-card p-8 rounded-3xl text-center hover-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-5xl md:text-6xl font-bold text-white mb-4">8+</h3>
+                    <p class="text-emerald-400 font-semibold text-lg md:text-xl">Technologies Learned</p>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-delay="400">
+                <blockquote class="text-2xl md:text-3xl italic text-gray-300 mb-6 font-light leading-relaxed">
+                    "The beautiful thing about learning is that no one can take it away from you."
+                </blockquote>
+                <p class="text-lg text-gray-400">
+                    I believe in continuous learning and staying updated with the latest technologies and best
+                    practices.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Professional <span
+                        class="text-secondary">Experience</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div
+                class="relative border-l-2 border-primary/30 ml-3 md:ml-0 md:mx-auto md:w-full space-y-12 pl-6 md:pl-0">
+                <!-- Timeline Item 1 -->
+                <div class="relative md:w-1/2 md:pr-12 md:ml-0" data-aos="fade-right">
+                    <div
+                        class="absolute -left-[31px] md:-right-[11px] md:left-auto top-0 w-6 h-6 bg-darker border-4 border-primary rounded-full z-10">
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl hover-card text-left md:text-right">
+                        <h3 class="text-xl font-bold text-white mb-1">Python Developer Intern</h3>
+                        <h4 class="text-primary font-medium mb-3">Rentlee Hybrid</h4>
+                        <p class="text-gray-400 text-sm">
+                            Contributed to backend architecture using Python. Developed robust and scalable APIs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative md:w-1/2 md:pl-12 md:ml-auto" data-aos="fade-left">
+                    <div
+                        class="absolute -left-[31px] md:-left-[11px] top-0 w-6 h-6 bg-darker border-4 border-secondary rounded-full z-10">
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl hover-card text-left">
+                        <h3 class="text-xl font-bold text-white mb-1">AI Intern</h3>
+                        <h4 class="text-secondary font-medium mb-3">Codec Technologies Pvt. Ltd.</h4>
+                        <p class="text-gray-400 text-sm">
+                            Worked on machine learning models, data processing pipelines, and AI-driven solutions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2
+                    class="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 inline-block">
+                    My Projects
+                </h2>
+                <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+                    A showcase of my work in frontend development and interactive applications
+                </p>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Project 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-card group" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div
+                        class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <i
+                            class="fas fa-industry text-6xl text-white/20 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div
+                            class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">Steel Properties Predictive Analytics</h3>
+                        <p class="text-gray-400 mb-6 line-clamp-3">
+                            A predictive machine learning model to analyze and forecast steel properties. Utilizes
+                            advanced algorithms to improve manufacturing quality control.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span
+                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-blue-300">Python</span>
+                            <span
+                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-green-300">Scikit-learn</span>
+                            <span
+                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-red-300">Pandas</span>
+                            <span
+                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-purple-300">Flask</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/golden7667/steal-prediction" target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 px-4 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-sm font-semibold">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                            <a href="https://steal-prediction.vercel.app" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 px-4 rounded-lg bg-primary hover:bg-indigo-400 transition-colors text-sm font-semibold text-white">
+                                <i class="fas fa-external-link-alt mr-2"></i> Demo
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-card group" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div
+                        class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden flex items-center justify-center">
+                        <i
+                            class="fas fa-user-shield text-6xl text-white/20 group-hover:scale-110 transition-transform duration-500"></i>
+                        <div
+                            class="absolute inset-0 bg-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">Face Recognition Attendance System</h3>
+                        <p class="text-gray-400 mb-6 line-clamp-3">
+                            An automated attendance tracking system leveraging computer vision and facial recognition to
+                            accurately identify individuals in real-time.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span
+                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-blue-300">Python</span>
+                            <span
+                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-indigo-300">OpenCV</span>
+                            <span
+                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-teal-300">Face
+                                Recognition</span>
+                            <span
+                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-yellow-300">MySQL</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/golden7667/face-recognition-system" target="_blank"
+                                rel="noopener noreferrer"
+                                class="w-full text-center py-2 px-4 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-sm font-semibold">
+                                <i class="fab fa-github mr-2"></i> View Repository
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Education</h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full mb-12"></div>
+
+            <div class="glass-card p-10 rounded-3xl inline-block w-full max-w-2xl hover-card mb-4">
+                <i class="fas fa-graduation-cap text-5xl text-primary mb-6"></i>
+                <h3 class="text-2xl font-bold mb-2">B.Tech Computer Science</h3>
+                <h4 class="text-xl text-gray-300 mb-4">Vivekananda Global University</h4>
+                <div
+                    class="inline-block px-4 py-2 rounded-full bg-secondary/20 border border-secondary/30 text-secondary font-semibold">
+                    CGPA: 7.12
+                </div>
+            </div>
+
+            <!-- Academic Timeline -->
+            <div class="mt-8 max-w-2xl mx-auto text-left relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-[39px] top-10 bottom-10 w-[2px] bg-white/10 hidden sm:block"></div>
+
+                <div class="space-y-6 relative z-10">
+                    <!-- 2022 -->
+                    <div class="flex flex-col sm:flex-row gap-6 sm:items-start" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex-shrink-0 flex items-center sm:items-start">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-lg sm:text-xl shadow-[0_0_15px_rgba(16,185,129,0.3)] mx-auto sm:mx-0 z-10 relative">
+                                2022
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl flex-grow border border-white/5 bg-[#0f172a]/80">
+                            <h3 class="text-xl font-bold text-white mb-2">Started Journey</h3>
+                            <p class="text-gray-400">Began my Computer Science journey at VGU</p>
+                        </div>
+                    </div>
+
+                    <!-- 2023 -->
+                    <div class="flex flex-col sm:flex-row gap-6 sm:items-start" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex-shrink-0 flex items-center sm:items-start">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-lg sm:text-xl shadow-[0_0_15px_rgba(16,185,129,0.3)] mx-auto sm:mx-0 z-10 relative">
+                                2023
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl flex-grow border border-white/5 bg-[#0f172a]/80">
+                            <h3 class="text-xl font-bold text-white mb-2">Foundation Years</h3>
+                            <p class="text-gray-400">Built strong fundamentals in programming and mathematics</p>
+                        </div>
+                    </div>
+
+                    <!-- 2024 -->
+                    <div class="flex flex-col sm:flex-row gap-6 sm:items-start" data-aos="fade-up" data-aos-delay="300">
+                        <div class="flex-shrink-0 flex items-center sm:items-start">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-lg sm:text-xl shadow-[0_0_15px_rgba(16,185,129,0.3)] mx-auto sm:mx-0 z-10 relative">
+                                2024
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl flex-grow border border-white/5 bg-[#0f172a]/80">
+                            <h3 class="text-xl font-bold text-white mb-2">Specialization</h3>
+                            <p class="text-gray-400">Focusing on ML and frontend development</p>
+                        </div>
+                    </div>
+
+                    <!-- 2025 -->
+                    <div class="flex flex-col sm:flex-row gap-6 sm:items-start" data-aos="fade-up" data-aos-delay="400">
+                        <div class="flex-shrink-0 flex items-center sm:items-start">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-lg sm:text-xl shadow-[0_0_15px_rgba(16,185,129,0.3)] mx-auto sm:mx-0 z-10 relative">
+                                2025
+                            </div>
+                        </div>
+                        <div class="glass-card p-6 rounded-2xl flex-grow border border-white/5 bg-[#0f172a]/80">
+                            <h3 class="text-xl font-bold text-white mb-2">Advanced Learning</h3>
+                            <p class="text-gray-400">Deep diving into advanced topics and projects</p>
+                        </div>
+                    </div>
+
+                    <!-- 2026 -->
+                    <div class="flex flex-col sm:flex-row gap-6 sm:items-start" data-aos="fade-up" data-aos-delay="500">
+                        <div class="flex-shrink-0 flex items-center sm:items-start">
+                            <div
+                                class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold text-lg sm:text-xl shadow-[0_0_15px_rgba(59,130,246,0.3)] mx-auto sm:mx-0 z-10 relative">
+                                2026
+                            </div>
+                        </div>
+                        <div
+                            class="glass-card p-6 rounded-2xl flex-grow border border-blue-500/30 bg-[#1e293b]/80 relative overflow-hidden">
+                            <h3 class="text-xl font-bold text-white mb-2">Graduation / Pass Out</h3>
+                            <p class="text-gray-400 mb-4">Completed B.Tech in Computer Science</p>
+                            <span
+                                class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-semibold mr-2">Current</span>
+                            <span
+                                class="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-semibold">CGPA:
+                                7.12</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Looking Ahead Section -->
+    <section id="looking-ahead" class="py-20 relative bg-gradient-to-b from-transparent to-[#0f172a]/40">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Looking <span class="text-blue-400">Ahead</span></h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full mb-10"></div>
+
+            <div
+                class="glass-card p-10 md:p-14 rounded-3xl relative overflow-hidden group border border-white/5 hover:border-white/10 transition-colors">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                <i class="fas fa-rocket text-5xl text-blue-400 mb-8"></i>
+                <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light relative z-10">
+                    As I approach graduation in 2026, I'm excited to apply my knowledge in <span
+                        class="text-blue-400 font-medium">machine learning</span> and <span
+                        class="text-purple-400 font-medium">frontend development</span> to real-world challenges. My
+                    goal is to contribute to innovative projects that make a positive impact while continuing to grow as
+                    a developer.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 md:p-12 rounded-3xl" data-aos="zoom-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Left Column: Follow Me -->
+                    <div>
+                        <h3 class="text-3xl font-bold mb-8">Follow Me</h3>
+                        <p class="text-gray-400 mb-8">
+                            I'm always open to discussing new projects, creative ideas or opportunities to be part of
+                            your visions. Connect with me on social media!
+                        </p>
+
+                        <div class="space-y-5 mb-8">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-blue-400 border border-white/10">
+                                    <i class="fas fa-envelope text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-1">Email
+                                        Me At</p>
+                                    <a href="mailto:goldenkrsingh921@gmail.com"
+                                        class="text-white hover:text-blue-400 transition-colors font-medium">goldenkrsingh921@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-green-400 border border-white/10">
+                                    <i class="fas fa-phone text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-1">Call Me
+                                        At</p>
+                                    <a href="tel:+917667711403"
+                                        class="text-white hover:text-green-400 transition-colors font-medium">+91
+                                        7667711403</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 mb-10">
+                            <a href="https://linkedin.com/in/golden-kr-singh" target="_blank" rel="noopener noreferrer"
+                                class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-colors border border-white/10 hover:shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                            <a href="https://github.com/golden7667" target="_blank" rel="noopener noreferrer"
+                                class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-gray-700 transition-colors border border-white/10 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://wa.me/917667711403" target="_blank" rel="noopener noreferrer"
+                                class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-green-500 transition-colors border border-white/10 hover:shadow-[0_0_15px_rgba(34,197,94,0.5)]">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </a>
+                            <a href="https://www.instagram.com/its_gold_d_roger?igsh=MXF2bm1tOThlb3V2MQ%3D%3D&amp;utm_source=qr"
+                                target="_blank" rel="noopener noreferrer"
+                                class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-pink-500 transition-colors border border-white/10 hover:shadow-[0_0_15px_rgba(236,72,153,0.5)]">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Form -->
+                    <div>
+                        <h3 class="text-3xl font-bold mb-8">Send a Message</h3>
+                        <form id="contactForm" class="space-y-5" novalidate>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-1">Name</label>
+                                <input type="text" id="name" placeholder="Your Name" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors text-white">
+                                <p id="nameError" class="text-red-500 text-xs mt-1 hidden error-text">Name is required.
+                                </p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-1">Email</label>
+                                <input type="email" id="email" placeholder="your.email@example.com" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors text-white">
+                                <p id="emailError" class="text-red-500 text-xs mt-1 hidden error-text">Please enter a
+                                    valid email.</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-1">Subject</label>
+                                <input type="text" id="subject" placeholder="What's this about?" required
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors text-white">
+                                <p id="subjectError" class="text-red-500 text-xs mt-1 hidden error-text">Subject is
+                                    required.</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-400 mb-1">Message</label>
+                                <textarea id="message" rows="4"
+                                    placeholder="Tell me about your project, idea, or just say hello..." required
+                                    minlength="20"
+                                    class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors text-white resize-none"></textarea>
+                                <p id="messageError" class="text-red-500 text-xs mt-1 hidden error-text">Message must be
+                                    at least 20 characters.</p>
+                            </div>
+                            <button type="submit" id="submitBtn"
+                                class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-bold text-white hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed">
+                                <span id="btnText">Send Message</span>
+                                <i id="btnSpinner" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b1120] pt-20 pb-10 border-t border-white/5 relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Top CTA Section -->
+            <div class="text-center mb-20 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to Start Something <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Amazing?</span>
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    Whether it's a new project, collaboration opportunity, or just a conversation about technology, I'm
+                    always open to new connections and exciting challenges.
+                </p>
+            </div>
+
+            <!-- Middle Links Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 pb-16 border-b border-white/5">
+                <div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Golden Kumar</h3>
+                    <p class="text-gray-400 leading-relaxed max-w-md">
+                        Aspiring ML Engineer and Frontend Developer passionate about creating innovative solutions and
+                        building meaningful connections in the tech community.
+                    </p>
+                </div>
+                <div class="flex flex-col md:items-end justify-center">
+                    <ul class="flex flex-wrap gap-6 font-medium text-gray-300">
+                        <li><a href="#home" class="hover:text-blue-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-blue-400 transition-colors">About</a></li>
+                        <li><a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a></li>
+                        <li><a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a></li>
+                        <li><a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright Section -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <p>&copy; <span id="year">2026</span> Golden Kumar. All rights reserved.</p>
+                <div class="flex flex-col items-center md:items-end gap-1">
+                    <p>
+                        Made with <i class="fas fa-heart text-red-500 mx-1"></i> and fueled by <i
+                            class="fas fa-coffee text-amber-600 mx-1"></i>
+                    </p>
+                    <p>Built with React, TypeScript, and Tailwind CSS</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-[60] flex flex-col gap-3"></div>
+
+    <!-- Success Modal -->
+    <div id="successModal"
+        class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="glass-card p-8 rounded-2xl max-w-md w-full mx-4 text-center transform scale-95 transition-transform duration-300"
+            id="successModalContent">
+            <div class="w-20 h-20 mx-auto bg-green-500/20 rounded-full flex items-center justify-center mb-6">
+                <i class="fas fa-check text-4xl text-green-500 check-anim"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Thank you!</h3>
+            <p class="text-gray-300 mb-8">Your message has been sent successfully. I'll get back to you within 24 hours.
+            </p>
+            <button id="closeModalBtn"
+                class="px-8 py-2 bg-white/10 hover:bg-white/20 rounded-lg font-semibold transition-colors">Close</button>
+        </div>
+    </div>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Particles.js for Starry Background -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Custom Script -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
