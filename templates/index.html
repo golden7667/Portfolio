@@ -56,29 +56,50 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-darker/70 border-b border-white/10"
+    <nav class="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-darker/80 border-b border-white/10 shadow-lg"
         id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+            <div class="flex justify-between items-center h-16 sm:h-20">
                 <div class="flex-shrink-0">
-                    <a href="#"
+                    <a href="#home"
                         class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">GK.</a>
                 </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
+                
+                <!-- Desktop & Tablet Navigation -->
+                <div class="hidden sm:block">
+                    <div class="ml-6 sm:ml-10 flex items-center space-x-4 sm:space-x-6 lg:space-x-8">
+                        <a href="#home"
+                            class="hover:text-primary text-gray-300 hover:text-white transition-colors px-3 py-2 rounded-md text-sm font-medium">Home</a>
                         <a href="#about"
-                            class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
+                            class="hover:text-primary text-gray-300 hover:text-white transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
                         <a href="#skills"
-                            class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                            class="hover:text-primary text-gray-300 hover:text-white transition-colors px-3 py-2 rounded-md text-sm font-medium">Skills</a>
                         <a href="#experience"
-                            class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                            class="hover:text-primary text-gray-300 hover:text-white transition-colors px-3 py-2 rounded-md text-sm font-medium">Experience</a>
                         <a href="#projects"
-                            class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                            class="hover:text-primary text-gray-300 hover:text-white transition-colors px-3 py-2 rounded-md text-sm font-medium">Projects</a>
                         <a href="#contact"
-                            class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                            class="hover:text-primary text-gray-300 hover:text-white transition-colors px-3 py-2 rounded-md text-sm font-medium">Contact</a>
                     </div>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="sm:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="text-gray-300 hover:text-white focus:outline-none p-2 rounded-lg bg-white/5 border border-white/10" aria-label="Toggle navigation">
+                        <i id="mobile-menu-icon" class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
             </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden sm:hidden bg-darker/95 border-b border-white/10 backdrop-blur-xl px-4 pt-3 pb-4 space-y-2">
+            <a href="#home" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-colors">Home</a>
+            <a href="#about" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-colors">About</a>
+            <a href="#skills" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-colors">Skills</a>
+            <a href="#experience" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-colors">Experience</a>
+            <a href="#projects" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-colors">Projects</a>
+            <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-colors">Contact</a>
         </div>
     </nav>
 
@@ -346,12 +367,12 @@
                 <!-- Project 1 -->
                 <div class="glass-card rounded-2xl overflow-hidden hover-card group" data-aos="fade-up"
                     data-aos-delay="100">
-                    <div
-                        class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden flex items-center justify-center">
-                        <i
-                            class="fas fa-industry text-6xl text-white/20 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="h-56 relative overflow-hidden group border-b border-white/10">
+                        <img src="{{ url_for('static', filename='images/steel_properties_prediction.png') }}" 
+                            alt="Steel Properties Predictive Analytics" 
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         <div
-                            class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60">
                         </div>
                     </div>
                     <div class="p-8">
@@ -388,12 +409,12 @@
                 <!-- Project 2 -->
                 <div class="glass-card rounded-2xl overflow-hidden hover-card group" data-aos="fade-up"
                     data-aos-delay="200">
-                    <div
-                        class="h-48 bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden flex items-center justify-center">
-                        <i
-                            class="fas fa-user-shield text-6xl text-white/20 group-hover:scale-110 transition-transform duration-500"></i>
+                    <div class="h-56 relative overflow-hidden group border-b border-white/10">
+                        <img src="{{ url_for('static', filename='images/face_recognition_attendance.jpg') }}" 
+                            alt="Face Recognition Attendance System" 
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         <div
-                            class="absolute inset-0 bg-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60">
                         </div>
                     </div>
                     <div class="p-8">
