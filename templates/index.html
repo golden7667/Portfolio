@@ -363,34 +363,82 @@
                 <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <!-- Project 1 -->
-                <div class="glass-card rounded-2xl overflow-hidden hover-card group" data-aos="fade-up"
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Smart College ERP System -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-card group flex flex-col justify-between" data-aos="fade-up"
                     data-aos-delay="100">
-                    <div class="h-56 relative overflow-hidden group border-b border-white/10">
-                        <img src="{{ url_for('static', filename='images/steel_properties_prediction.png') }}" 
-                            alt="Steel Properties Predictive Analytics" 
-                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60">
+                    <div>
+                        <div class="h-56 relative overflow-hidden group border-b border-white/10">
+                            <img src="{{ url_for('static', filename='images/college_erp_system.png') }}" 
+                                alt="Smart College ERP System" 
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60">
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-3">Smart College ERP System</h3>
+                            <p class="text-gray-400 mb-6 line-clamp-3">
+                                Enterprise academic ERP system featuring multi-database security routing, roll-number attendance tracking, interactive timetables, live notices, and digital printable ID cards with barcodes.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-emerald-300">Django 5</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-blue-300">Python</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-purple-300">Bootstrap 5</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-yellow-300">SQLite Multi-DB</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3">Steel Properties Predictive Analytics</h3>
-                        <p class="text-gray-400 mb-6 line-clamp-3">
-                            A predictive machine learning model to analyze and forecast steel properties. Utilizes
-                            advanced algorithms to improve manufacturing quality control.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span
-                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-blue-300">Python</span>
-                            <span
-                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-green-300">Scikit-learn</span>
-                            <span
-                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-red-300">Pandas</span>
-                            <span
-                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-purple-300">Flask</span>
+                    <div class="p-8 pt-0">
+                        <div class="flex gap-4">
+                            <a href="https://github.com/golden7667/erp-management-system" target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 px-4 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-sm font-semibold">
+                                <i class="fab fa-github mr-2"></i> Code
+                            </a>
+                            <a href="https://erp-management-system-sandy.vercel.app/accounts/login/?next=/dashboard/student/" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 text-center py-2 px-4 rounded-lg bg-primary hover:bg-indigo-400 transition-colors text-sm font-semibold text-white">
+                                <i class="fas fa-external-link-alt mr-2"></i> Demo
+                            </a>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Steel Properties Predictive Analytics -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-card group flex flex-col justify-between" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div>
+                        <div class="h-56 relative overflow-hidden group border-b border-white/10">
+                            <img src="{{ url_for('static', filename='images/steel_properties_prediction.png') }}" 
+                                alt="Steel Properties Predictive Analytics" 
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60">
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-3">Steel Properties Predictive Analytics</h3>
+                            <p class="text-gray-400 mb-6 line-clamp-3">
+                                A predictive machine learning model to analyze and forecast steel properties. Utilizes
+                                advanced algorithms to improve manufacturing quality control.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-blue-300">Python</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-green-300">Scikit-learn</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-red-300">Pandas</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-purple-300">Flask</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8 pt-0">
                         <div class="flex gap-4">
                             <a href="https://github.com/golden7667/steal-prediction" target="_blank"
                                 rel="noopener noreferrer"
@@ -403,37 +451,39 @@
                             </a>
                         </div>
                     </div>
-
                 </div>
 
-                <!-- Project 2 -->
-                <div class="glass-card rounded-2xl overflow-hidden hover-card group" data-aos="fade-up"
-                    data-aos-delay="200">
-                    <div class="h-56 relative overflow-hidden group border-b border-white/10">
-                        <img src="{{ url_for('static', filename='images/face_recognition_attendance.jpg') }}" 
-                            alt="Face Recognition Attendance System" 
-                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60">
+                <!-- Project 3: Face Recognition Attendance System -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-card group flex flex-col justify-between" data-aos="fade-up"
+                    data-aos-delay="300">
+                    <div>
+                        <div class="h-56 relative overflow-hidden group border-b border-white/10">
+                            <img src="{{ url_for('static', filename='images/face_recognition_attendance.jpg') }}" 
+                                alt="Face Recognition Attendance System" 
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60">
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-3">Face Recognition Attendance System</h3>
+                            <p class="text-gray-400 mb-6 line-clamp-3">
+                                An automated attendance tracking system leveraging computer vision and facial recognition to
+                                accurately identify individuals in real-time.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-8">
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-blue-300">Python</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-indigo-300">OpenCV</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-teal-300">Face Recognition</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-yellow-300">MySQL</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3">Face Recognition Attendance System</h3>
-                        <p class="text-gray-400 mb-6 line-clamp-3">
-                            An automated attendance tracking system leveraging computer vision and facial recognition to
-                            accurately identify individuals in real-time.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-8">
-                            <span
-                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-blue-300">Python</span>
-                            <span
-                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-indigo-300">OpenCV</span>
-                            <span
-                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-teal-300">Face
-                                Recognition</span>
-                            <span
-                                class="px-3 py-1 text-xs font-medium bg-white/5 border border-white/10 rounded-full text-yellow-300">MySQL</span>
-                        </div>
+                    <div class="p-8 pt-0">
                         <div class="flex gap-4">
                             <a href="https://github.com/golden7667/face-recognition-system" target="_blank"
                                 rel="noopener noreferrer"
