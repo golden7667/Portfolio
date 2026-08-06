@@ -340,6 +340,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 3D Profile Button Click Handler
+    const btn3dProfile = document.getElementById('btn3dProfile');
+    if (btn3dProfile) {
+        btn3dProfile.addEventListener('click', (e) => {
+            const profileContainer = document.getElementById('profilePhotoContainer');
+            if (profileContainer) {
+                profileContainer.classList.add('animate-bounce');
+                setTimeout(() => profileContainer.classList.remove('animate-bounce'), 1000);
+                
+                const rect = profileContainer.getBoundingClientRect();
+                const fakeEvent = {
+                    clientX: rect.left + rect.width / 2,
+                    clientY: rect.top + rect.height / 2
+                };
+                for (let i = 0; i < 25; i++) {
+                    setTimeout(() => {
+                        if (typeof spawnStar === 'function') spawnStar(fakeEvent);
+                    }, i * 25);
+                }
+            }
+        });
+    }
+
     // 7. Global Mouse Star Trail Effect
     let lastStarTime = 0;
     document.addEventListener('mousemove', (e) => {
