@@ -56,6 +56,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 1.7. Python 3D Component Engine & VanillaTilt Perspective Initializer
+    if (typeof VanillaTilt !== 'undefined') {
+        const tiltElements = document.querySelectorAll('.tilt-card, .hover-card, .glass-card');
+        tiltElements.forEach(el => {
+            if (!el.classList.contains('tilt-card')) {
+                el.classList.add('tilt-card');
+            }
+            if (!el.classList.contains('preserve-3d')) {
+                el.classList.add('preserve-3d');
+            }
+        });
+
+        fetch('/api/3d-portfolio-components')
+            .then(res => res.json())
+            .then(data => {
+                const maxTilt = data.components ? data.components.skills.maxTilt : 16;
+                const perspective = data.components ? data.components.skills.perspective : 1200;
+
+                VanillaTilt.init(document.querySelectorAll('.tilt-card'), {
+                    max: maxTilt,
+                    speed: 400,
+                    glare: true,
+                    "max-glare": 0.35,
+                    scale: 1.04,
+                    perspective: perspective
+                });
+            })
+            .catch(() => {
+                VanillaTilt.init(document.querySelectorAll('.tilt-card'), {
+                    max: 16,
+                    speed: 400,
+                    glare: true,
+                    "max-glare": 0.35,
+                    scale: 1.04,
+                    perspective: 1200
+                });
+            });
+    }
+
     // 2. Typewriter Effect for Hero Section
     const roles = ["Machine Learning Engineer", "Python Developer", "Frontend Developer", "Problem Solver"];
     let roleIndex = 0;
@@ -172,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btnSpinner.classList.remove('hidden');
             
             try {
-                const response = await fetch('https://formsubmit.co/ajax/goldenkrsingh921@gmail.com', {
+                const response = await fetch('/api/contact', {
                     method: 'POST',
                     headers: { 
                         'Content-Type': 'application/json',
@@ -182,22 +221,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         name: name,
                         email: email,
                         subject: subject,
-                        message: message,
-                        _subject: "New Portfolio Submission: " + subject
+                        message: message
                     })
                 });
                 
                 const result = await response.json();
                 
-                if (response.ok && result.success === 'true') {
+                if (response.ok && result.status === 'success') {
                     showSuccessModal();
                     contactForm.reset();
-                    showToast('success', 'Message sent successfully! Check your email.');
+                    showToast('success', '✨ Message Sent! Notification email sent to goldenkrsingh921@gmail.com and SMS alert dispatched to +91 7667711403!');
                 } else {
                     throw new Error(result.message || 'Server error');
                 }
             } catch (error) {
-                showToast('error', '❌ Something went wrong. Please try again later.');
+                showToast('error', error.message || '❌ Something went wrong. Please try again later.');
             } finally {
                 // Restore button
                 btn.disabled = false;
@@ -347,5 +385,198 @@ document.addEventListener('DOMContentLoaded', () => {
             star.remove();
         }, 700);
     }
+
+    // 5. Python-Driven Full-Screen 3D Cyan Wireframe Polyhedron & Cyber Particle Background Engine
+    function init3DPythonBackground() {
+        const bgCanvas = document.getElementById('bg3dCanvas');
+        if (!bgCanvas || typeof THREE === 'undefined') return;
+
+        const bgScene = new THREE.Scene();
+        bgScene.fog = new THREE.FogExp2(0x020617, 0.008);
+
+        const bgCamera = new THREE.PerspectiveCamera(
+            55,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            1000
+        );
+        bgCamera.position.set(0, 0, 48);
+
+        const bgRenderer = new THREE.WebGLRenderer({
+            canvas: bgCanvas,
+            alpha: true,
+            antialias: true
+        });
+        bgRenderer.setSize(window.innerWidth, window.innerHeight);
+        bgRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const bgGroup = new THREE.Group();
+        bgScene.add(bgGroup);
+
+        // Ambient & Dynamic Point Lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+        bgScene.add(ambientLight);
+
+        // Dynamic 3D Cursor Point Light (Illuminates 3D Cyan Wireframe & Particles as cursor moves)
+        const cursorLight = new THREE.PointLight(0x38bdf8, 5.5, 75);
+        cursorLight.position.set(0, 0, 20);
+        bgScene.add(cursorLight);
+
+        const cyanGlowLight = new THREE.PointLight(0x06b6d4, 4.0, 80);
+        cyanGlowLight.position.set(-20, 5, 5);
+        bgScene.add(cyanGlowLight);
+
+        let polyhedronMesh = null;
+        let nodePointsMesh = null;
+        let particleSystem = null;
+        let pSpinData = { spinX: 0.003, spinY: 0.006 };
+
+        // Fetch 3D spatial node matrices calculated by Python
+        fetch('/api/3d-background-nodes')
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // 1. Render 3D Cyan Geodesic Polyhedron Wireframe Mesh computed by Python
+                    if (data.polyhedron) {
+                        const pData = data.polyhedron;
+                        pSpinData.spinX = pData.spin[0];
+                        pSpinData.spinY = pData.spin[1];
+
+                        // Create Geodesic Icosahedron Geometry (Sphere Polyhedron)
+                        const pGeo = new THREE.IcosahedronGeometry(pData.radius, pData.detail);
+                        
+                        // Cyan Wireframe Material matching the screenshot
+                        const pMat = new THREE.MeshStandardMaterial({
+                            color: 0x38bdf8,
+                            wireframe: true,
+                            transparent: true,
+                            opacity: 0.75,
+                            roughness: 0.1,
+                            metalness: 0.9,
+                            emissive: 0x0284c7,
+                            emissiveIntensity: 0.45
+                        });
+
+                        polyhedronMesh = new THREE.Mesh(pGeo, pMat);
+                        polyhedronMesh.position.set(pData.pos[0], pData.pos[1], pData.pos[2]);
+
+                        // Add Glowing Node Vertices on Polyhedron Vertices
+                        const pVerts = pGeo.attributes.position.array;
+                        const vPositions = new Float32Array(pVerts.length);
+                        for (let i = 0; i < pVerts.length; i++) {
+                            vPositions[i] = pVerts[i];
+                        }
+                        const vGeo = new THREE.BufferGeometry();
+                        vGeo.setAttribute('position', new THREE.BufferAttribute(vPositions, 3));
+                        const vMat = new THREE.PointsMaterial({
+                            color: 0x38bdf8,
+                            size: 0.4,
+                            transparent: true,
+                            opacity: 0.9
+                        });
+                        nodePointsMesh = new THREE.Points(vGeo, vMat);
+                        polyhedronMesh.add(nodePointsMesh);
+
+                        bgGroup.add(polyhedronMesh);
+                    }
+
+                    // 2. Render 350+ Glowing Cyan & Electric Blue Depth Particles computed by Python
+                    if (data.particles && data.particles.length > 0) {
+                        const count = data.particles.length;
+                        const posArray = new Float32Array(count * 3);
+                        const colorArray = new Float32Array(count * 3);
+
+                        data.particles.forEach((pt, i) => {
+                            posArray[i * 3] = pt.pos[0];
+                            posArray[i * 3 + 1] = pt.pos[1];
+                            posArray[i * 3 + 2] = pt.pos[2];
+
+                            const c = new THREE.Color(pt.color);
+                            colorArray[i * 3] = c.r;
+                            colorArray[i * 3 + 1] = c.g;
+                            colorArray[i * 3 + 2] = c.b;
+                        });
+
+                        const particleGeo = new THREE.BufferGeometry();
+                        particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+                        particleGeo.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
+                        const particleMat = new THREE.PointsMaterial({
+                            size: 0.35,
+                            vertexColors: true,
+                            transparent: true,
+                            opacity: 0.85
+                        });
+
+                        particleSystem = new THREE.Points(particleGeo, particleMat);
+                        bgScene.add(particleSystem);
+                    }
+                }
+            })
+            .catch(err => console.error("Could not fetch 3D background data from Python:", err));
+
+        // Mouse & Scroll Parallax Tracking
+        let mouseX = 0, mouseY = 0;
+        let targetX = 0, targetY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+
+        let scrollY = 0;
+        window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+        });
+
+        // Animation Loop
+        let clock = new THREE.Clock();
+
+        function animate3DBg() {
+            requestAnimationFrame(animate3DBg);
+
+            const elapsedTime = clock.getElapsedTime();
+
+            // Dynamic Cursor Light Tracking in 3D Space
+            cursorLight.position.x = mouseX * 30;
+            cursorLight.position.y = -mouseY * 30;
+
+            // Rotate Floating 3D Geodesic Polyhedron Wireframe Mesh
+            if (polyhedronMesh) {
+                polyhedronMesh.rotation.x += pSpinData.spinX;
+                polyhedronMesh.rotation.y += pSpinData.spinY;
+                polyhedronMesh.position.y = 4.0 + Math.sin(elapsedTime * 1.2) * 1.2;
+            }
+
+            // Animate Swirling Cyber Particle Field
+            if (particleSystem) {
+                particleSystem.rotation.y = elapsedTime * 0.025;
+                particleSystem.rotation.x = Math.sin(elapsedTime * 0.015) * 0.03;
+            }
+
+            // Parallax camera lerp + Scroll Space Depth Glide
+            targetX = mouseX * 7;
+            targetY = -mouseY * 7 - (scrollY * 0.02);
+
+            bgCamera.position.x += (targetX - bgCamera.position.x) * 0.04;
+            bgCamera.position.y += (targetY - bgCamera.position.y) * 0.04;
+            bgCamera.lookAt(0, 0, 0);
+
+            bgRenderer.render(bgScene, bgCamera);
+        }
+
+        animate3DBg();
+
+        // Window Resize Listener
+        window.addEventListener('resize', () => {
+            bgCamera.aspect = window.innerWidth / window.innerHeight;
+            bgCamera.updateProjectionMatrix();
+            bgRenderer.setSize(window.innerWidth, window.innerHeight);
+            bgRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        });
+    }
+
+    // Initialize Python-driven 3D Background Engine
+    init3DPythonBackground();
 
 });
