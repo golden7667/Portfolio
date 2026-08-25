@@ -82,21 +82,21 @@
     </nav>
 
     <!-- Main Full-Page Simulator Container -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8 flex flex-col justify-center">
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6 flex flex-col justify-center">
         
         <!-- Header Banner -->
-        <div class="mb-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="mb-4 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-3">
             <div>
-                <h1 class="text-3xl md:text-4xl font-extrabold text-white flex items-center gap-3 justify-center md:justify-start">
-                    <i class="fab fa-python text-yellow-400 text-3xl md:text-4xl"></i>
+                <h1 class="text-2xl md:text-3xl font-extrabold text-white flex items-center gap-2.5 justify-center md:justify-start">
+                    <i class="fab fa-python text-yellow-400 text-2xl md:text-3xl"></i>
                     <span>Python Simulator</span>
                 </h1>
-                <p class="text-gray-400 text-xs md:text-sm mt-1">
-                    Execute live Python 3 scripts in a secure, sandboxed environment with real-time stdout capture, execution timing, and memory metrics.
+                <p class="text-gray-400 text-xs mt-0.5">
+                    Execute live Python 3 scripts in a secure, sandboxed environment with real-time stdout capture and execution timing.
                 </p>
             </div>
 
-            <div class="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-2xl text-xs font-mono text-gray-300">
+            <div class="flex items-center gap-2.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-xl text-[11px] font-mono text-gray-300">
                 <span class="text-emerald-400 font-bold">Runtime:</span> Python 3.11
                 <span class="text-gray-600">|</span>
                 <span class="text-cyan-400 font-bold">Security:</span> Active Sandbox
@@ -104,65 +104,65 @@
         </div>
 
         <!-- Standalone IDE Card -->
-        <div class="cyber-glass-panel preserve-3d p-4 md:p-5 rounded-2xl flex-grow flex flex-col justify-between border border-cyan-500/20">
+        <div class="cyber-glass-panel preserve-3d p-3.5 md:p-4 rounded-xl flex-grow flex flex-col justify-between border border-cyan-500/20">
             
             <!-- Preset Selector Tabs Bar -->
-            <div class="flex flex-wrap gap-1.5 mb-3 border-b border-white/10 pb-3">
-                <button class="simulator-tab active px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5" data-preset="ml_training">
-                    <i class="fas fa-brain text-emerald-400 text-xs"></i> ML Data Split & Metrics
+            <div class="flex flex-wrap gap-1.5 mb-2.5 border-b border-white/10 pb-2.5">
+                <button class="simulator-tab active px-2.5 py-1 rounded-lg text-[11px] font-semibold flex items-center gap-1.5" data-preset="ml_training">
+                    <i class="fas fa-brain text-emerald-400 text-[10px]"></i> ML Data Split & Metrics
                 </button>
-                <button class="simulator-tab px-3 py-1.5 rounded-xl text-xs font-semibold text-gray-400 hover:text-white flex items-center gap-1.5" data-preset="steel_prediction">
-                    <i class="fas fa-cogs text-blue-400 text-xs"></i> Steel Property Prediction
+                <button class="simulator-tab px-2.5 py-1 rounded-lg text-[11px] font-semibold text-gray-400 hover:text-white flex items-center gap-1.5" data-preset="steel_prediction">
+                    <i class="fas fa-cogs text-blue-400 text-[10px]"></i> Steel Property Prediction
                 </button>
-                <button class="simulator-tab px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-400 hover:text-white flex items-center gap-1.5" data-preset="face_vector">
-                    <i class="fas fa-user-check text-purple-400 text-xs"></i> Facial Vector Distance
+                <button class="simulator-tab px-2.5 py-1 rounded-lg text-[11px] font-semibold text-gray-400 hover:text-white flex items-center gap-1.5" data-preset="face_vector">
+                    <i class="fas fa-user-check text-purple-400 text-[10px]"></i> Facial Vector Distance
                 </button>
-                <button class="simulator-tab px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-400 hover:text-white flex items-center gap-1.5" data-preset="polyhedron_math">
-                    <i class="fas fa-cube text-cyan-400 text-xs"></i> 3D Mesh Wireframe Math
+                <button class="simulator-tab px-2.5 py-1 rounded-lg text-[11px] font-semibold text-gray-400 hover:text-white flex items-center gap-1.5" data-preset="polyhedron_math">
+                    <i class="fas fa-cube text-cyan-400 text-[10px]"></i> 3D Mesh Wireframe Math
                 </button>
-                <button class="simulator-tab px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-400 hover:text-white flex items-center gap-1.5" data-preset="custom">
-                    <i class="fas fa-edit text-yellow-400 text-xs"></i> Custom Python Script
+                <button class="simulator-tab px-2.5 py-1 rounded-lg text-[11px] font-semibold text-gray-400 hover:text-white flex items-center gap-1.5" data-preset="custom">
+                    <i class="fas fa-edit text-yellow-400 text-[10px]"></i> Custom Python Script
                 </button>
             </div>
 
             <!-- Split IDE Layout -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 flex-grow">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 flex-grow">
                 <!-- Left Pane: Code Editor (7 cols) -->
                 <div class="lg:col-span-7 flex flex-col justify-between">
                     <div class="flex-grow flex flex-col">
                         <!-- Editor Top Bar -->
-                        <div class="flex justify-between items-center bg-[#020617] px-3.5 py-2 rounded-t-lg border border-b-0 border-cyan-500/20">
-                            <div class="flex items-center gap-2">
-                                <i class="fab fa-python text-yellow-400 text-sm"></i>
-                                <span class="text-xs font-mono text-gray-200 font-semibold" id="currentFileName">ml_pipeline.py</span>
-                                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 ml-2"><i class="fas fa-check-circle mr-1"></i> Valid</span>
+                        <div class="flex justify-between items-center bg-[#020617] px-3 py-1.5 rounded-t-lg border border-b-0 border-cyan-500/20">
+                            <div class="flex items-center gap-1.5">
+                                <i class="fab fa-python text-yellow-400 text-xs"></i>
+                                <span class="text-[11px] font-mono text-gray-200 font-semibold" id="currentFileName">ml_pipeline.py</span>
+                                <span class="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 ml-1.5"><i class="fas fa-check-circle mr-0.5"></i> Valid</span>
                             </div>
-                            <div class="flex items-center gap-3">
-                                <button id="copyCodeBtn" class="text-xs text-gray-400 hover:text-cyan-300 transition-colors flex items-center gap-1">
-                                    <i class="fas fa-copy text-xs"></i> Copy
+                            <div class="flex items-center gap-2.5">
+                                <button id="copyCodeBtn" class="text-[11px] text-gray-400 hover:text-cyan-300 transition-colors flex items-center gap-1">
+                                    <i class="fas fa-copy text-[10px]"></i> Copy
                                 </button>
-                                <button id="resetCodeBtn" class="text-xs text-gray-400 hover:text-yellow-300 transition-colors flex items-center gap-1">
-                                    <i class="fas fa-undo text-xs"></i> Reset
+                                <button id="resetCodeBtn" class="text-[11px] text-gray-400 hover:text-yellow-300 transition-colors flex items-center gap-1">
+                                    <i class="fas fa-undo text-[10px]"></i> Reset
                                 </button>
                             </div>
                         </div>
 
                         <!-- Editor Textarea & Line Numbers -->
-                        <div class="code-editor-wrapper flex flex-grow rounded-b-lg min-h-[260px]">
+                        <div class="code-editor-wrapper flex flex-grow rounded-b-lg min-h-[190px]">
                             <div id="lineNumbers" class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</div>
-                            <textarea id="pythonCodeInput" class="code-editor-textarea flex-grow" rows="10" spellcheck="false"></textarea>
+                            <textarea id="pythonCodeInput" class="code-editor-textarea flex-grow" rows="8" spellcheck="false"></textarea>
                         </div>
                     </div>
 
                     <!-- Controls & Stats Footer -->
-                    <div class="mt-3 flex flex-wrap items-center justify-between gap-2 bg-white/5 p-2.5 rounded-xl border border-white/10">
-                        <button id="runCodeBtn" class="cyber-btn-glow px-5 py-2 rounded-lg text-white font-bold text-xs flex items-center gap-1.5 active:scale-95">
-                            <i class="fas fa-play text-[10px]"></i>
+                    <div class="mt-2.5 flex flex-wrap items-center justify-between gap-2 bg-white/5 p-2 rounded-lg border border-white/10">
+                        <button id="runCodeBtn" class="cyber-btn-glow px-4 py-1.5 rounded-md text-white font-bold text-xs flex items-center gap-1.5 active:scale-95">
+                            <i class="fas fa-play text-[9px]"></i>
                             <span>Run Code</span>
                             <span class="text-[9px] opacity-80 font-mono ml-0.5 hidden sm:inline">(Ctrl+Enter)</span>
                         </button>
 
-                        <div class="flex items-center gap-3 text-[11px] font-mono">
+                        <div class="flex items-center gap-2.5 text-[10px] font-mono">
                             <span id="execTimeBadge" class="text-gray-400 flex items-center gap-1">
                                 <i class="fas fa-stopwatch text-cyan-400"></i> -- ms
                             </span>
@@ -178,37 +178,37 @@
 
                 <!-- Right Pane: Live Cyber Terminal (5 cols) -->
                 <div class="lg:col-span-5 flex flex-col">
-                    <div class="terminal-box rounded-xl p-3.5 flex-grow flex flex-col justify-between min-h-[280px]">
+                    <div class="terminal-box rounded-lg p-3 flex-grow flex flex-col justify-between min-h-[200px]">
                         <!-- Terminal Window Top Bar -->
                         <div>
-                            <div class="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
-                                <div class="flex items-center gap-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
-                                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block"></span>
-                                    <span class="w-2.5 h-2.5 rounded-full bg-green-500/80 inline-block"></span>
-                                    <span class="text-[11px] font-mono text-gray-400 ml-1.5">bash - python3 main.py</span>
+                            <div class="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1.5">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-red-500/80 inline-block"></span>
+                                    <span class="w-2 h-2 rounded-full bg-yellow-500/80 inline-block"></span>
+                                    <span class="w-2 h-2 rounded-full bg-green-500/80 inline-block"></span>
+                                    <span class="text-[10px] font-mono text-gray-400 ml-1">bash - python3 main.py</span>
                                 </div>
-                                <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">STDOUT</span>
+                                <span class="text-[8px] font-mono px-1 py-0.2 rounded bg-emerald-500/20 text-emerald-300">STDOUT</span>
                             </div>
 
                             <!-- Console Output -->
-                            <div id="terminalOutput" class="space-y-1.5 overflow-y-auto max-h-[240px] pr-1">
-                                <div class="text-[11px] font-mono text-emerald-400 flex items-center gap-1.5">
+                            <div id="terminalOutput" class="space-y-1 overflow-y-auto max-h-[160px] pr-1">
+                                <div class="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
                                     <span class="terminal-prompt">golden@portfolio:~$</span>
                                     <span>python3 main.py</span>
                                 </div>
-                                <pre id="consoleLogText" class="terminal-output text-xs font-mono text-cyan-300">Click "Run Code" to execute Python script in live sandbox...</pre>
+                                <pre id="consoleLogText" class="terminal-output text-[11px] font-mono text-cyan-300">Click "Run Code" to execute Python script in live sandbox...</pre>
                             </div>
                         </div>
 
                         <!-- Terminal Footer Status Bar -->
-                        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-gray-400 font-mono">
-                            <div class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
+                        <div class="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-gray-400 font-mono">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
                                 <span>Engine: <span id="terminalStatusText" class="text-emerald-400 font-semibold">Idle</span></span>
                             </div>
                             <button id="clearTerminalBtn" class="hover:text-white transition-colors flex items-center gap-1">
-                                <i class="fas fa-trash-alt"></i> Clear Output
+                                <i class="fas fa-trash-alt text-[10px]"></i> Clear
                             </button>
                         </div>
                     </div>
