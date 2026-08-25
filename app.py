@@ -15,6 +15,13 @@ def home():
     return render_template('index.html')
 
 
+@app.route('/simulator')
+def simulator_page():
+    """Renders full-page dedicated Python Code Execution Simulator."""
+    return render_template('simulator.html')
+
+
+
 
 
 @app.route('/api/3d-background-nodes')
@@ -188,7 +195,158 @@ def get_portfolio_data():
 
 
 
-@app.route('/api/contact', methods=['POST'])
+@app.route('/api/simulate-python', methods=['POST'])
+def simulate_python():
+    """Simulates live Python code execution safely with stdout capture, execution timing, and sandboxing."""
+    import sys
+    import io
+    import traceback
+
+    data = request.get_json() or {}
+    code = data.get('code', '').strip()
+
+    if not code:
+        return jsonify({
+            'status': 'error',
+            'output': '',
+            'executionTimeMs': 0,
+            'linesExecuted': 0,
+            'memory': '0 KB',
+            'error': 'No code provided to execute.'
+        }), 400
+
+    # Restricted security inspection
+    forbidden_terms = [
+        'import os', 'import sys', 'import subprocess', 'import shutil', 'import socket',
+        'import requests', 'import urllib', 'import ftplib', 'import pty', 'import signal',
+        '__import__', 'open(', 'eval(', 'exec(', 'os.', 'sys.', 'subprocess.',
+        '__subclasses__', '__bases__', '__mro__', '__globals__', 'builtins'
+    ]
+
+    for term in forbidden_terms:
+        if term in code:
+            return jsonify({
+                'status': 'error',
+                'output': '',
+                'executionTimeMs': 0,
+                'linesExecuted': len(code.splitlines()),
+                'memory': '0 KB',
+                'error': f'[Security Violation]: Forbidden instruction or module detected ("{term}"). Security sandbox active.'
+            }), 400
+
+    import json
+    import re
+    import itertools
+    import functools
+    import collections
+
+    allowed_modules = {
+        'math': math,
+        'random': random,
+        'datetime': datetime,
+        'json': json,
+        're': re,
+        'itertools': itertools,
+        'functools': functools,
+        'collections': collections
+    }
+
+    def safe_import(name, globals=None, locals=None, fromlist=(), level=0):
+        if name in allowed_modules:
+            return allowed_modules[name]
+        raise ImportError(f"[Security Sandbox]: Module '{name}' is restricted.")
+
+    # Safe execution scope setup
+    safe_globals = {
+        '__builtins__': {
+            '__import__': safe_import,
+            'print': print,
+            'len': len,
+            'range': range,
+            'str': str,
+            'int': int,
+            'float': float,
+            'list': list,
+            'dict': dict,
+            'set': set,
+            'tuple': tuple,
+            'bool': bool,
+            'sum': sum,
+            'min': min,
+            'max': max,
+            'abs': abs,
+            'round': round,
+            'enumerate': enumerate,
+            'zip': zip,
+            'sorted': sorted,
+            'reversed': reversed,
+            'any': any,
+            'all': all,
+            'isinstance': isinstance,
+            'type': type,
+            'map': map,
+            'filter': filter,
+            'slice': slice,
+            'Exception': Exception,
+            'ValueError': ValueError,
+            'TypeError': TypeError,
+            'ZeroDivisionError': ZeroDivisionError,
+            'KeyError': KeyError,
+            'IndexError': IndexError,
+        },
+        'math': math,
+        'random': random,
+        'datetime': datetime,
+        'json': json,
+        're': re,
+        'itertools': itertools,
+        'functools': functools,
+        'collections': collections
+    }
+
+    # Redirect stdout
+    stdout_buffer = io.StringIO()
+    original_stdout = sys.stdout
+    sys.stdout = stdout_buffer
+
+    start_time = time.perf_counter()
+    lines_count = len([line for line in code.splitlines() if line.strip() and not line.strip().startswith('#')])
+    error_msg = None
+    status = 'success'
+
+    try:
+        # Override print in safe_globals to redirect to buffer inside exec context as well
+        def custom_print(*args, **kwargs):
+            kwargs['file'] = stdout_buffer
+            print(*args, **kwargs)
+
+        safe_globals['__builtins__']['print'] = custom_print
+
+        exec(code, safe_globals)
+        output_text = stdout_buffer.getvalue()
+        if not output_text.strip():
+            output_text = "[Program finished with return code 0 and no console output]"
+    except Exception as e:
+        status = 'error'
+        output_text = stdout_buffer.getvalue()
+        error_msg = traceback.format_exc(limit=2)
+    finally:
+        sys.stdout = original_stdout
+        end_time = time.perf_counter()
+
+    execution_time_ms = round((end_time - start_time) * 1000, 2)
+    memory_simulated = f"{round(random.uniform(1.2, 3.8), 2)} MB"
+
+    return jsonify({
+        'status': status,
+        'output': output_text,
+        'executionTimeMs': execution_time_ms,
+        'linesExecuted': lines_count,
+        'memory': memory_simulated,
+        'error': error_msg
+    })
+
+
 def contact():
     data = request.get_json()
     

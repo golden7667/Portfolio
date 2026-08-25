@@ -602,4 +602,204 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Python-driven 3D Background Engine
     init3DPythonBackground();
 
+    // 8. Python Code Execution Simulator Engine
+    function initPythonSimulator() {
+        const codeInput = document.getElementById('pythonCodeInput');
+        const lineNumbers = document.getElementById('lineNumbers');
+        const runBtn = document.getElementById('runCodeBtn');
+        const resetBtn = document.getElementById('resetCodeBtn');
+        const copyBtn = document.getElementById('copyCodeBtn');
+        const clearTermBtn = document.getElementById('clearTerminalBtn');
+        const currentFileName = document.getElementById('currentFileName');
+        const consoleText = document.getElementById('consoleLogText');
+        const terminalStatusText = document.getElementById('terminalStatusText');
+        
+        const execTimeBadge = document.getElementById('execTimeBadge');
+        const execLinesBadge = document.getElementById('execLinesBadge');
+        const execMemBadge = document.getElementById('execMemBadge');
+
+        if (!codeInput || !runBtn) return;
+
+        // Code Presets Dictionary
+        const presets = {
+            ml_training: {
+                filename: 'ml_pipeline.py',
+                code: `# Machine Learning Preprocessing & Model Evaluation Simulator\n# Built for Golden Kumar's ML Portfolio\n\nimport math\nimport random\n\nprint("--- ML DATASET TRAIN/TEST SPLIT & METRICS ---")\n\n# 1. Generate Synthetic Dataset (Features X, Labels y)\nsamples = 50\nfeatures = [[round(random.uniform(1.0, 10.0), 2), round(random.uniform(20, 80), 2)] for _ in range(samples)]\nlabels = [1 if (f[0] * 1.5 + f[1] * 0.2) > 15 else 0 for f in features]\n\n# 2. Perform 80/20 Train-Test Split\nsplit_idx = int(samples * 0.8)\ntrain_X, test_X = features[:split_idx], features[split_idx:]\ntrain_y, test_y = labels[:split_idx], labels[split_idx:]\n\nprint(f"Total Samples: {samples}")\nprint(f"Train Set Size: {len(train_X)} samples")\nprint(f"Test Set Size:  {len(test_X)} samples")\n\n# 3. Predict & Calculate Model Metrics\ncorrect_predictions = sum(1 for x, y in zip(test_X, test_y) if (x[0] * 1.5 + x[1] * 0.2 > 15) == bool(y))\naccuracy = (correct_predictions / len(test_y)) * 100\n\nprint(f"\\n[Model Metrics]:")\nprint(f"Accuracy: {accuracy:.2f}%")\nprint(f"Status: Model successfully evaluated!")`
+            },
+            steel_prediction: {
+                filename: 'steel_analytics.py',
+                code: `# Steel Mechanical Properties Prediction Algorithm\n# Simulates Tensile Strength & Yield Stress Estimation\n\nimport math\n\nprint("=== STEEL MECHANICAL PROPERTIES ANALYTICS ===")\n\n# Chemical composition (% elements)\nalloys = [\n    {"id": "Steel-A1", "C": 0.25, "Mn": 1.20, "Si": 0.35, "Cr": 0.50},\n    {"id": "Steel-B2", "C": 0.40, "Mn": 1.45, "Si": 0.40, "Cr": 0.85},\n    {"id": "Steel-C3", "C": 0.18, "Mn": 0.90, "Si": 0.20, "Cr": 0.15},\n]\n\ndef predict_yield_stress(c, mn, si, cr):\n    # Regression formula simulation: YS = 220 + 380*C + 85*Mn + 110*Si + 95*Cr\n    return 220 + (380 * c) + (85 * mn) + (110 * si) + (95 * cr)\n\nprint("Sample ID | Carbon(%) | Manganese(%) | Estimated Yield Stress (MPa)")\nprint("-" * 65)\n\nfor alloy in alloys:\n    ys = predict_yield_stress(alloy["C"], alloy["Mn"], alloy["Si"], alloy["Cr"])\n    print(f"{alloy['id']:<9} | {alloy['C']:^9.2f} | {alloy['Mn']:^12.2f} | {ys:>12.2f} MPa")\n\nprint("\\nPrediction complete: Alloys meet structural compliance standards.")`
+            },
+            face_vector: {
+                filename: 'facial_verification.py',
+                code: `# Facial Vector Recognition Distance Engine\n# Biometric Verification Simulation for Attendance Tracking\n\nimport math\n\nprint(">>> BIOMETRIC FACE RECOGNITION MATCHING ENGINE <<<")\n\n# 128-D Feature Embedding Vector Simulation (Truncated)\nknown_face_encoding = [0.142, -0.052, 0.311, 0.892, -0.421, 0.198, -0.076, 0.542]\nscanned_face_encoding = [0.145, -0.049, 0.308, 0.885, -0.415, 0.201, -0.071, 0.539]\n\ndef euclidean_distance(v1, v2):\n    return math.sqrt(sum((a - b) ** 2 for a, b in zip(v1, v2)))\n\ndistance = euclidean_distance(known_face_encoding, scanned_face_encoding)\nthreshold = 0.40  # Matching tolerance threshold\n\nprint(f"Scanned Face Vector Dimension: {len(scanned_face_encoding)}-D")\nprint(f"Calculated Euclidean Distance: {distance:.5f}")\nprint(f"Match Threshold Limit:        {threshold:.2f}")\n\nif distance < threshold:\n    confidence = (1.0 - distance) * 100\n    print(f"\\n✅ MATCH CONFIRMED! Identity Verified with {confidence:.2f}% Confidence.")\n    print("Attendance Logged: Student ID #2022CS089 -> PRESENT")\nelse:\n    print("\\n❌ ACCESS DENIED! Face vector distance exceeds match threshold.")`
+            },
+            polyhedron_math: {
+                filename: 'mesh_generator.py',
+                code: `# 3D Cyan Geodesic Polyhedron Wireframe Generator\n# Python Math Engine powering portfolio's WebGL Background\n\nimport math\n\nprint("=== 3D GEODESIC POLYHEDRON MESH METRICS ===")\n\nradius = 16.5\nvertices_count = 42\nfaces_count = 80\n\n# Golden Ratio for Icosahedron vertex positioning\nphi = (1 + math.sqrt(5)) / 2\nscale = radius / math.sqrt(1 + phi**2)\n\nnodes = [\n    (-1 * scale, phi * scale, 0),\n    (1 * scale, phi * scale, 0),\n    (-1 * scale, -phi * scale, 0),\n    (1 * scale, -phi * scale, 0)\n]\n\nprint(f"Polyhedron Radius: {radius} units")\nprint(f"Golden Ratio (phi): {phi:.6f}")\nprint(f"Generated Nodes Sample:")\n\nfor idx, (x, y, z) in enumerate(nodes, start=1):\n    print(f"  Node #{idx}: X={x:+.3f}, Y={y:+.3f}, Z={z:+.3f}")\n\nprint(f"\\n3D Spatial Mesh status: {vertices_count} Vertices & {faces_count} Polyhedron Triangles Ready.")`
+            },
+            custom: {
+                filename: 'custom_script.py',
+                code: `# Custom Python 3 Playground\n# Write your own Python code below and click "Run Code"!\n\ndef calculate_stats(numbers):\n    total = sum(numbers)\n    avg = total / len(numbers)\n    return total, avg\n\ndata = [15, 42, 88, 93, 27, 64]\ntotal, avg = calculate_stats(data)\n\nprint(f"Dataset: {data}")\nprint(f"Sum: {total}")\nprint(f"Average: {avg:.2f}")`
+            }
+        };
+
+        let activePresetKey = 'ml_training';
+
+        // Update Line Numbers Column
+        function updateLineNumbers() {
+            const lines = codeInput.value.split('\n').length;
+            let numbersHtml = '';
+            for (let i = 1; i <= Math.max(lines, 10); i++) {
+                numbersHtml += `${i}<br>`;
+            }
+            lineNumbers.innerHTML = numbersHtml;
+        }
+
+        // Load Preset into Editor
+        function loadPreset(presetKey) {
+            activePresetKey = presetKey;
+            const preset = presets[presetKey] || presets.ml_training;
+            codeInput.value = preset.code;
+            if (currentFileName) currentFileName.textContent = preset.filename;
+            updateLineNumbers();
+            
+            // Tab active UI state
+            document.querySelectorAll('.simulator-tab').forEach(tab => {
+                if (tab.dataset.preset === presetKey) {
+                    tab.classList.add('active');
+                    tab.classList.remove('text-gray-400');
+                } else {
+                    tab.classList.remove('active');
+                    tab.classList.add('text-gray-400');
+                }
+            });
+        }
+
+        // Tab Switch Listeners
+        document.querySelectorAll('.simulator-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const key = tab.dataset.preset;
+                loadPreset(key);
+            });
+        });
+
+        // Sync Line Numbers on Typing & Scroll
+        codeInput.addEventListener('input', updateLineNumbers);
+        codeInput.addEventListener('scroll', () => {
+            lineNumbers.scrollTop = codeInput.scrollTop;
+        });
+
+        // Tab Key Support in Textarea
+        codeInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = codeInput.selectionStart;
+                const end = codeInput.selectionEnd;
+                codeInput.value = codeInput.value.substring(0, start) + '    ' + codeInput.value.substring(end);
+                codeInput.selectionStart = codeInput.selectionEnd = start + 4;
+                updateLineNumbers();
+            } else if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                runPythonScript();
+            }
+        });
+
+        // Run Code Handler
+        async function runPythonScript() {
+            const code = codeInput.value;
+            if (!code || !code.trim()) return;
+
+            // UI Loading state
+            runBtn.disabled = true;
+            runBtn.innerHTML = `<i class="fas fa-circle-notch fa-spin text-xs"></i> Running...`;
+            if (terminalStatusText) {
+                terminalStatusText.textContent = 'Executing...';
+                terminalStatusText.className = 'text-yellow-400 font-semibold';
+            }
+
+            consoleText.textContent = 'Executing Python code in sandboxed runtime...';
+            consoleText.className = 'terminal-output text-xs md:text-sm font-mono text-yellow-300 animate-pulse';
+
+            try {
+                const res = await fetch('/api/simulate-python', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code: code })
+                });
+
+                const data = await res.json();
+
+                if (res.ok && data.status === 'success') {
+                    consoleText.className = 'terminal-output text-xs md:text-sm font-mono text-cyan-300';
+                    consoleText.textContent = data.output;
+
+                    if (terminalStatusText) {
+                        terminalStatusText.textContent = 'Success (0)';
+                        terminalStatusText.className = 'text-emerald-400 font-semibold';
+                    }
+
+                    if (execTimeBadge) execTimeBadge.innerHTML = `<i class="fas fa-stopwatch text-cyan-400"></i> ${data.executionTimeMs} ms`;
+                    if (execLinesBadge) execLinesBadge.innerHTML = `<i class="fas fa-file-code text-indigo-400"></i> ${data.linesExecuted} lines`;
+                    if (execMemBadge) execMemBadge.innerHTML = `<i class="fas fa-memory text-purple-400"></i> ${data.memory}`;
+
+                    if (typeof showToast === 'function') {
+                        showToast('success', `⚡ Python executed in ${data.executionTimeMs} ms!`);
+                    }
+                } else {
+                    consoleText.className = 'terminal-output text-xs md:text-sm font-mono text-red-400';
+                    consoleText.textContent = (data.error || data.output || 'Execution Error');
+
+                    if (terminalStatusText) {
+                        terminalStatusText.textContent = 'Failed (1)';
+                        terminalStatusText.className = 'text-red-400 font-semibold';
+                    }
+
+                    if (execTimeBadge) execTimeBadge.innerHTML = `<i class="fas fa-stopwatch text-red-400"></i> ${data.executionTimeMs || 0} ms`;
+                    if (execLinesBadge) execLinesBadge.innerHTML = `<i class="fas fa-file-code text-indigo-400"></i> ${data.linesExecuted || 0} lines`;
+                    if (execMemBadge) execMemBadge.innerHTML = `<i class="fas fa-memory text-purple-400"></i> 0 MB`;
+                }
+            } catch (err) {
+                consoleText.className = 'terminal-output text-xs md:text-sm font-mono text-red-400';
+                consoleText.textContent = `[System Error]: Could not connect to Python simulator backend endpoint.\n${err.message}`;
+                if (terminalStatusText) {
+                    terminalStatusText.textContent = 'Network Error';
+                    terminalStatusText.className = 'text-red-400 font-semibold';
+                }
+            } finally {
+                runBtn.disabled = false;
+                runBtn.innerHTML = `<i class="fas fa-play text-xs"></i> <span>Run Code</span> <span class="text-[10px] opacity-75 font-mono ml-1 hidden sm:inline">(Ctrl+Enter)</span>`;
+            }
+        }
+
+        runBtn.addEventListener('click', runPythonScript);
+
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                loadPreset(activePresetKey);
+                if (typeof showToast === 'function') showToast('warning', 'Editor code reset to preset defaults.');
+            });
+        }
+
+        if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(codeInput.value);
+                if (typeof showToast === 'function') showToast('success', '📋 Python code copied to clipboard!');
+            });
+        }
+
+        if (clearTermBtn) {
+            clearTermBtn.addEventListener('click', () => {
+                consoleText.textContent = '[Console cleared]';
+                consoleText.className = 'terminal-output text-xs md:text-sm font-mono text-gray-500';
+            });
+        }
+
+        // Initialize default preset
+        loadPreset('ml_training');
+    }
+
+    initPythonSimulator();
+
 });
+
