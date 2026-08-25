@@ -239,6 +239,10 @@ def simulate_python():
     import itertools
     import functools
     import collections
+    import statistics
+    import string
+    import hashlib
+    import base64
 
     allowed_modules = {
         'math': math,
@@ -248,19 +252,40 @@ def simulate_python():
         're': re,
         'itertools': itertools,
         'functools': functools,
-        'collections': collections
+        'collections': collections,
+        'statistics': statistics,
+        'string': string,
+        'hashlib': hashlib,
+        'base64': base64,
+        'time': time
     }
 
+    # Dynamically include numpy / pandas / scipy if installed in Python environment
+    for mod_name in ['numpy', 'pandas', 'scipy']:
+        try:
+            import importlib
+            allowed_modules[mod_name] = importlib.import_module(mod_name)
+        except ImportError:
+            pass
+
     def safe_import(name, globals=None, locals=None, fromlist=(), level=0):
-        if name in allowed_modules:
-            return allowed_modules[name]
-        raise ImportError(f"[Security Sandbox]: Module '{name}' is restricted.")
+        root_module = name.split('.')[0]
+        if root_module in allowed_modules:
+            return allowed_modules[root_module]
+        raise ImportError(f"[Security Sandbox]: Module '{name}' is restricted in live simulator.")
+
+    def mock_input(prompt=""):
+        if prompt:
+            print(prompt, end="")
+        print("[Simulated Input]: Standard Input 100")
+        return "100"
 
     # Safe execution scope setup
     safe_globals = {
         '__builtins__': {
             '__import__': safe_import,
             'print': print,
+            'input': mock_input,
             'len': len,
             'range': range,
             'str': str,
@@ -269,13 +294,18 @@ def simulate_python():
             'list': list,
             'dict': dict,
             'set': set,
+            'frozenset': frozenset,
             'tuple': tuple,
             'bool': bool,
+            'bytes': bytes,
+            'bytearray': bytearray,
             'sum': sum,
             'min': min,
             'max': max,
             'abs': abs,
             'round': round,
+            'pow': pow,
+            'divmod': divmod,
             'enumerate': enumerate,
             'zip': zip,
             'sorted': sorted,
@@ -283,26 +313,36 @@ def simulate_python():
             'any': any,
             'all': all,
             'isinstance': isinstance,
+            'issubclass': issubclass,
             'type': type,
             'map': map,
             'filter': filter,
             'slice': slice,
+            'chr': chr,
+            'ord': ord,
+            'hex': hex,
+            'oct': oct,
+            'bin': bin,
+            'hash': hash,
+            'format': format,
+            'repr': repr,
+            'getattr': getattr,
+            'hasattr': hasattr,
             'Exception': Exception,
             'ValueError': ValueError,
             'TypeError': TypeError,
             'ZeroDivisionError': ZeroDivisionError,
             'KeyError': KeyError,
             'IndexError': IndexError,
-        },
-        'math': math,
-        'random': random,
-        'datetime': datetime,
-        'json': json,
-        're': re,
-        'itertools': itertools,
-        'functools': functools,
-        'collections': collections
+            'AttributeError': AttributeError,
+            'NameError': NameError,
+            'ImportError': ImportError,
+        }
     }
+
+    # Populate allowed_modules into safe_globals for direct import-less access if desired
+    for k, v in allowed_modules.items():
+        safe_globals[k] = v
 
     # Redirect stdout
     stdout_buffer = io.StringIO()
@@ -347,6 +387,7 @@ def simulate_python():
     })
 
 
+@app.route('/api/contact', methods=['POST'])
 def contact():
     data = request.get_json()
     
