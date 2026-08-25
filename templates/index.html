@@ -578,15 +578,15 @@
                             </div>
 
                             <!-- Code Input Area with Line Numbers -->
-                            <div class="code-editor-wrapper flex rounded-b-lg min-h-[190px]">
+                            <div class="code-editor-wrapper flex rounded-b-lg min-h-[140px]">
                                 <div id="lineNumbers" class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</div>
-                                <textarea id="pythonCodeInput" class="code-editor-textarea" rows="8" spellcheck="false"></textarea>
+                                <textarea id="pythonCodeInput" class="code-editor-textarea" rows="5" spellcheck="false"></textarea>
                             </div>
                         </div>
 
                         <!-- Editor Controls Bar -->
-                        <div class="mt-2.5 flex flex-wrap items-center justify-between gap-2 bg-white/5 p-2 rounded-lg border border-white/10">
-                            <button id="runCodeBtn" class="cyber-btn-glow px-4 py-1.5 rounded-md text-white font-bold text-xs flex items-center gap-1.5 active:scale-95">
+                        <div class="mt-2 flex flex-wrap items-center justify-between gap-2 bg-white/5 p-1.5 px-2 rounded-lg border border-white/10">
+                            <button id="runCodeBtn" class="cyber-btn-glow px-3.5 py-1 rounded-md text-white font-bold text-xs flex items-center gap-1.5 active:scale-95">
                                 <i class="fas fa-play text-[9px]"></i>
                                 <span>Run Code</span>
                                 <span class="text-[9px] opacity-80 font-mono ml-0.5 hidden sm:inline">(Ctrl+Enter)</span>
@@ -608,10 +608,10 @@
 
                     <!-- Right Column: Terminal Console Output (5 cols) -->
                     <div class="lg:col-span-5 flex flex-col">
-                        <div class="terminal-box rounded-lg p-3 flex-grow flex flex-col justify-between min-h-[200px]">
+                        <div class="terminal-box rounded-lg p-2.5 flex-grow flex flex-col justify-between min-h-[140px]">
                             <!-- Terminal Window Top Bar -->
                             <div>
-                                <div class="flex items-center justify-between border-b border-white/10 pb-1.5 mb-1.5">
+                                <div class="flex items-center justify-between border-b border-white/10 pb-1 mb-1">
                                     <div class="flex items-center gap-1.5">
                                         <span class="w-2 h-2 rounded-full bg-red-500/80 inline-block"></span>
                                         <span class="w-2 h-2 rounded-full bg-yellow-500/80 inline-block"></span>
@@ -622,7 +622,7 @@
                                 </div>
 
                                 <!-- Console Content -->
-                                <div id="terminalOutput" class="space-y-1 overflow-y-auto max-h-[160px] pr-1">
+                                <div id="terminalOutput" class="space-y-1 overflow-y-auto max-h-[100px] pr-1">
                                     <div class="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
                                         <span class="terminal-prompt">golden@portfolio:~$</span>
                                         <span>python3 main.py</span>
@@ -632,13 +632,13 @@
                             </div>
 
                             <!-- Terminal Footer Status Bar -->
-                            <div class="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-gray-400 font-mono">
+                            <div class="mt-2 pt-1.5 border-t border-white/10 flex items-center justify-between text-[10px] text-gray-400 font-mono">
                                 <div class="flex items-center gap-1.5">
                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
                                     <span>Engine: <span id="terminalStatusText" class="text-emerald-400 font-semibold">Idle</span></span>
                                 </div>
                                 <button id="clearTerminalBtn" class="hover:text-white transition-colors flex items-center gap-1">
-                                    <i class="fas fa-trash-alt text-[10px]"></i> Clear
+                                    <i class="fas fa-trash-alt text-[9px]"></i> Clear
                                 </button>
                             </div>
                         </div>
