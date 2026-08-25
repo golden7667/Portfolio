@@ -148,21 +148,21 @@
                         </div>
 
                         <!-- Editor Textarea & Line Numbers -->
-                        <div class="code-editor-wrapper flex flex-grow rounded-b-lg min-h-[140px]">
+                        <div class="code-editor-wrapper flex flex-grow rounded-b-lg min-h-[90px]">
                             <div id="lineNumbers" class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10</div>
-                            <textarea id="pythonCodeInput" class="code-editor-textarea flex-grow" rows="5" spellcheck="false"></textarea>
+                            <textarea id="pythonCodeInput" class="code-editor-textarea flex-grow" rows="3" spellcheck="false"></textarea>
                         </div>
                     </div>
 
                     <!-- Controls & Stats Footer -->
-                    <div class="mt-2 flex flex-wrap items-center justify-between gap-2 bg-white/5 p-1.5 px-2 rounded-lg border border-white/10">
-                        <button id="runCodeBtn" class="cyber-btn-glow px-3.5 py-1 rounded-md text-white font-bold text-xs flex items-center gap-1.5 active:scale-95">
-                            <i class="fas fa-play text-[9px]"></i>
+                    <div class="mt-1.5 flex flex-wrap items-center justify-between gap-1.5 bg-white/5 p-1 px-2 rounded-lg border border-white/10">
+                        <button id="runCodeBtn" class="cyber-btn-glow px-3 py-0.5 rounded-md text-white font-bold text-xs flex items-center gap-1 active:scale-95">
+                            <i class="fas fa-play text-[8px]"></i>
                             <span>Run Code</span>
-                            <span class="text-[9px] opacity-80 font-mono ml-0.5 hidden sm:inline">(Ctrl+Enter)</span>
+                            <span class="text-[8px] opacity-80 font-mono ml-0.5 hidden sm:inline">(Ctrl+Enter)</span>
                         </button>
 
-                        <div class="flex items-center gap-2.5 text-[10px] font-mono">
+                        <div class="flex items-center gap-2 text-[9px] font-mono">
                             <span id="execTimeBadge" class="text-gray-400 flex items-center gap-1">
                                 <i class="fas fa-stopwatch text-cyan-400"></i> -- ms
                             </span>
@@ -178,37 +178,37 @@
 
                 <!-- Right Pane: Live Cyber Terminal (5 cols) -->
                 <div class="lg:col-span-5 flex flex-col">
-                    <div class="terminal-box rounded-lg p-2.5 flex-grow flex flex-col justify-between min-h-[140px]">
+                    <div class="terminal-box rounded-lg p-2 flex-grow flex flex-col justify-between min-h-[90px]">
                         <!-- Terminal Window Top Bar -->
                         <div>
-                            <div class="flex items-center justify-between border-b border-white/10 pb-1 mb-1">
-                                <div class="flex items-center gap-1.5">
-                                    <span class="w-2 h-2 rounded-full bg-red-500/80 inline-block"></span>
-                                    <span class="w-2 h-2 rounded-full bg-yellow-500/80 inline-block"></span>
-                                    <span class="w-2 h-2 rounded-full bg-green-500/80 inline-block"></span>
-                                    <span class="text-[10px] font-mono text-gray-400 ml-1">bash - python3 main.py</span>
+                            <div class="flex items-center justify-between border-b border-white/10 pb-0.5 mb-0.5">
+                                <div class="flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red-500/80 inline-block"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-yellow-500/80 inline-block"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500/80 inline-block"></span>
+                                    <span class="text-[9px] font-mono text-gray-400 ml-1">bash - python3 main.py</span>
                                 </div>
                                 <span class="text-[8px] font-mono px-1 py-0.2 rounded bg-emerald-500/20 text-emerald-300">STDOUT</span>
                             </div>
 
                             <!-- Console Output -->
-                            <div id="terminalOutput" class="space-y-1 overflow-y-auto max-h-[100px] pr-1">
-                                <div class="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
+                            <div id="terminalOutput" class="space-y-0.5 overflow-y-auto max-h-[60px] pr-1">
+                                <div class="text-[9px] font-mono text-emerald-400 flex items-center gap-1">
                                     <span class="terminal-prompt">golden@portfolio:~$</span>
                                     <span>python3 main.py</span>
                                 </div>
-                                <pre id="consoleLogText" class="terminal-output text-[11px] font-mono text-cyan-300">Click "Run Code" to execute Python script in live sandbox...</pre>
+                                <pre id="consoleLogText" class="terminal-output text-[10px] font-mono text-cyan-300">Click "Run Code" to execute Python script in live sandbox...</pre>
                             </div>
                         </div>
 
                         <!-- Terminal Footer Status Bar -->
-                        <div class="mt-2 pt-1.5 border-t border-white/10 flex items-center justify-between text-[10px] text-gray-400 font-mono">
-                            <div class="flex items-center gap-1.5">
+                        <div class="mt-1 pt-1 border-t border-white/10 flex items-center justify-between text-[9px] text-gray-400 font-mono">
+                            <div class="flex items-center gap-1">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
                                 <span>Engine: <span id="terminalStatusText" class="text-emerald-400 font-semibold">Idle</span></span>
                             </div>
                             <button id="clearTerminalBtn" class="hover:text-white transition-colors flex items-center gap-1">
-                                <i class="fas fa-trash-alt text-[9px]"></i> Clear
+                                <i class="fas fa-trash-alt text-[8px]"></i> Clear
                             </button>
                         </div>
                     </div>
