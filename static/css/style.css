@@ -277,7 +277,7 @@
 .code-editor-wrapper {
     position: relative;
     background: rgba(2, 6, 23, 0.95);
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
 }
@@ -287,12 +287,12 @@
     text-align: right;
     color: #475569;
     font-family: 'Fira Code', 'Consolas', monospace;
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-right: 0.75rem;
-    padding-left: 0.75rem;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
     background: rgba(15, 23, 42, 0.6);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -301,9 +301,9 @@
     background: transparent;
     color: #38bdf8;
     font-family: 'Fira Code', 'Consolas', monospace;
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-    padding: 1rem;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    padding: 0.5rem 0.75rem;
     resize: none;
     outline: none;
     width: 100%;
@@ -317,22 +317,27 @@
 }
 
 .simulator-tab {
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
     border: 1px solid transparent;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.5rem;
 }
 
 .simulator-tab.active {
     background: rgba(56, 189, 248, 0.15);
     color: #38bdf8;
     border-color: rgba(56, 189, 248, 0.4);
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
 }
 
 .terminal-box {
     background: #020617;
     border: 1px solid rgba(56, 189, 248, 0.2);
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8), 0 0 25px rgba(6, 182, 212, 0.15);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 0 20px rgba(6, 182, 212, 0.12);
     font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
 }
 
 .terminal-prompt {
