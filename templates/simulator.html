@@ -36,17 +36,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
-<body class="bg-darker text-light font-sans antialiased min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-cyan-500 selection:text-black">
+<body class="cyber-grid-bg text-gray-100 min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-black overflow-x-hidden relative">
     <!-- Interactive WebGL Background Canvas -->
     <canvas id="bg3dCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-[-2]"></canvas>
 
     <!-- Starry Background Animation -->
     <div id="particles-js" class="fixed inset-0 z-[-2] opacity-40"></div>
 
-    <!-- Background Gradient Effects -->
-    <div class="fixed inset-0 z-[-1] pointer-events-none">
-        <div class="absolute top-10 left-10 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-[140px] opacity-15 animate-blob"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-[140px] opacity-15 animate-blob animation-delay-2000"></div>
+    <!-- Background Gradient Ambient Aurora Effects -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+        <div class="aurora-glow-orb-1"></div>
+        <div class="aurora-glow-orb-2"></div>
     </div>
 
     <!-- Top Dedicated Navbar -->
